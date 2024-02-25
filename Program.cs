@@ -10,7 +10,14 @@
         // Выводим изначальный массив строк
         foreach (string str in randomStrings)
         {
-            Console.Write(str + "\t"); 
+            Console.Write(str + "\t");
+        }
+        string[] stringsThreeOrLessChars = ChooseThreeOrLessCharStrings(randomStrings);
+        Console.WriteLine();
+        //Выводим форматированный массив строк
+        foreach (string str in stringsThreeOrLessChars)
+        {
+            Console.Write(str + "\t");
         }
     }
     /// <summary>
@@ -42,15 +49,46 @@
     /// <returns>Массив строк случайной длины</returns>
     static string[] GenerateRandomStrings()
     {
-        int arrayLength = random.Next(1, 21); // Случайная длина массива от 1 до 20
-        Console.WriteLine(arrayLength + "- Длина массива\n"); // Отладочная печать, узнаем сколько элементов массива
-        string[] randomStrings = new string[arrayLength];
-        for (int i = 0; i < arrayLength; i++)
+        int stringsLength = random.Next(5, 21); // Случайная длина массива от 5 до 20
+        Console.WriteLine(stringsLength + " - Длина исходного массива"); // Отладочная печать, узнаем сколько элементов массива
+        string[] randomStrings = new string[stringsLength];
+        for (int i = 0; i < stringsLength; i++)
         {
             int stringLength = random.Next(2, 6); // Случайная длина строки от 2 до 5
             randomStrings[i] = GenerateRandomString(stringLength);
         }
         return randomStrings;
     }
-    //Добавить обработчик по условию, коммит
+/// <summary>
+/// 
+/// </summary>
+/// <param name="strings"></param>
+/// <returns></returns>
+    static string[] ChooseThreeOrLessCharStrings(string[] strings)
+    {
+        string[] formattedString = new string[0];
+        foreach (string str in strings)
+        {
+            if (str.Length <= 3)
+            {
+                formattedString = AddStrToArr(formattedString, str); // Добавляем строку
+            }
+            else continue;
+        }
+        return formattedString;
+    }
+    /// <summary>
+    /// Добавление строки в массив
+    /// </summary>
+    /// <param name="strings">Обрабатываемый массив</param>
+    /// <param name="newString">Добавляемая строка</param>
+    /// <returns>Массив с новой строкой</returns>
+    static string[] AddStrToArr(string[] strings, string newString)
+    {
+        // Увеличиваем размер массива на 1 элемент
+        Array.Resize(ref strings, strings.Length + 1);
+        // Добавляем новую строку в конец массива
+        strings[strings.Length - 1] = newString;
+        return strings;
+    }
 }
