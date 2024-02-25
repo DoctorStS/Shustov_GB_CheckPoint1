@@ -15,3 +15,16 @@ Shustov_GB_CheckPoint1
 [“Hello”, “2”, “world”, “:-)”] → [“2”, “:-)”]
 [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 [“Russia”, “Denmark”, “Kazan”] → []
+
+# Блок-схема
+Вызовы функций
+
+![Вызовы функций](diagram/diagram_1_Calls.png)
+
+Функция генерации массива случайных строк
+
+![Функция генерации массива случайных строк](diagram/diagram_2_RNDArrayGen.png)
+
+Функция выборки <3 буквенных строк в массив
+
+![Функция выборки <3 буквенных строк в массив](diagram/diagram_3_ArrayFormat.png)
